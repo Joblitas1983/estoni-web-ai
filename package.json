@@ -14,9 +14,11 @@
     "test": "jest"
   },
   "dependencies": {
-    "next": "^12.3.4",
+    "next": "14.2.15",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "some-module": "0.0.3",
+    "tu-proyecto": "file:../vercel"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",

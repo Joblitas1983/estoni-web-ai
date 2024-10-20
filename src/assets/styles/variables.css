@@ -1,0 +1,28 @@
+@import './variables.css';
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-size: var(--font-size-medium);
+    margin: var(--spacing-medium);
+}
+
+h1 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-large);
+}
+
+.button {
+    background-color: var(--color-secondary);
+    padding: var(--spacing-small) var(--spacing-medium);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: var(--font-size-medium);
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: var(--color-accent);
+}
+
