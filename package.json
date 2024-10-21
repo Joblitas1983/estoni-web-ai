@@ -5,20 +5,20 @@
   "description": "This is a Next.js project bootstrapped with create-next-app.",
   "main": "index.js",
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Estoni Group",
+  "license": "MIT",
   "scripts": {
+    "start": "node index.js",
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
     "test": "jest"
   },
   "dependencies": {
-    "next": "14.2.15",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "some-module": "0.0.3",
-    "tu-proyecto": "file:../vercel"
+    "estoni-web-ai": "file:../vercel",
+    "next": "12.0.0",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "some-module": "0.0.3"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
@@ -34,13 +34,11 @@
     "@svgr/core": "^6.0.0"
   },
   "workspaces": [
-    "ruta/a/tu/primer/paquete",
-    "ruta/a/tu/segundo/paquete",
     "directorio-del-workspace/*"
   ],
   "packageManager": "yarn@1.22.19",
   "repository": {
     "type": "git",
-    "url": "git add README.md"
+    "url": "git+https://github.com/usuario/repo.git"
   }
 }

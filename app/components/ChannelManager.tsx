@@ -1,66 +1,57 @@
-'use client'
+import { useState } from 'react';
 
-import { useState } from 'react'
-import { useCompletion } from '@vercel/ai'
+const ChannelManager = () => {
+  const [airbnbLink, setAirbnbLink] = useState('');
+  const [bookingLink, setBookingLink] = useState('');
 
-export default function ChannelManager() {
-  const [airbnbToken, setAirbnbToken] = useState('')
-  const [bookingToken, setBookingToken] = useState('')
-  const [message, setMessage] = useState('')
-  const { complete, completion, isLoading } = useCompletion({
-    api: '/api/respond',
-  })
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!airbnbToken || !bookingToken) {
-      setMessage('Por favor, ingresa ambos tokens')
-      return
-    }
-    // Aquí normalmente enviarías los tokens al backend para almacenarlos de forma segura
-    setMessage('Tokens guardados. Generando respuesta automática...')
-    await complete('Genera una respuesta para un huésped que pregunta sobre disponibilidad')
-  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Aquí puedes manejar la lógica para usar los enlaces, por ejemplo, enviarlos a una API
+    console.log('Enlace de Airbnb:', airbnbLink);
+    console.log('Enlace de Booking:', bookingLink);
+  };
 
   return (
-    <div className="max-w-2xl mx-auto p-4">
+    <div className="w-full max-w-md p-4 border rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold mb-4">Channel Manager</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label htmlFor="airbnb" className="block text-sm font-medium text-gray-700">Token de Airbnb</label>
+      <form onSubmit={handleSubmit}>
+        <div className="mb-4">
+          <label className="block mb-2" htmlFor="airbnbLink">
+            Enlace Calendario Airbnb
+          </label>
           <input
-            type="text"
-            id="airbnb"
-            value={airbnbToken}
-            onChange={(e) => setAirbnbToken(e.target.value)}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            type="url"
+            id="airbnbLink"
+            value={airbnbLink}
+            onChange={(e) => setAirbnbLink(e.target.value)}
+            required
+            className="w-full p-2 border rounded"
+            placeholder="https://airbnb.com/calendar"
           />
         </div>
-        <div>
-          <label htmlFor="booking" className="block text-sm font-medium text-gray-700">Token de Booking</label>
+        <div className="mb-4">
+          <label className="block mb-2" htmlFor="bookingLink">
+            Enlace Calendario Booking
+          </label>
           <input
-            type="text"
-            id="booking"
-            value={bookingToken}
-            onChange={(e) => setBookingToken(e.target.value)}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+            type="url"
+            id="bookingLink"
+            value={bookingLink}
+            onChange={(e) => setBookingLink(e.target.value)}
+            required
+            className="w-full p-2 border rounded"
+            placeholder="https://booking.com/calendar"
           />
         </div>
         <button
           type="submit"
-          className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 disabled:bg-gray-400"
-          disabled={isLoading}
+          className="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600"
         >
-          {isLoading ? 'Procesando...' : 'Guardar y Generar Respuesta'}
+          Guardar Enlaces
         </button>
       </form>
-      {message && <p className="mt-4 text-green-600">{message}</p>}
-      {completion && (
-        <div className="mt-4 p-4 bg-gray-100 rounded-md">
-          <h3 className="text-xl font-semibold mb-2">Respuesta Generada:</h3>
-          <p>{completion}</p>
-        </div>
-      )}
     </div>
-  )
-}
+  );
+};
+
+export default ChannelManager;
