@@ -1,18 +1,32 @@
-'use client'
+'use client';
 
-import { useState } from 'react'
-import { useCompletion } from '@vercel/ai'
+import { useState } from 'react';
+
+// Si no puedes instalar '@vercel/ai', puedes simular la función 'useCompletion'.
+const useCompletion = () => {
+  const [completion, setCompletion] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const complete = (prompt: string) => {
+    setIsLoading(true);
+    // Simulación de espera para el ejemplo
+    setTimeout(() => {
+      setCompletion(`Código HTML generado para: ${prompt}`);
+      setIsLoading(false);
+    }, 2000);
+  };
+
+  return { complete, completion, isLoading };
+};
 
 export default function WebPageGenerator() {
-  const [prompt, setPrompt] = useState('')
-  const { complete, completion, isLoading } = useCompletion({
-    api: '/api/generate',
-  })
+  const [prompt, setPrompt] = useState('');
+  const { complete, completion, isLoading } = useCompletion();
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    complete(prompt)
-  }
+    e.preventDefault();
+    complete(prompt);
+  };
 
   return (
     <div className="max-w-2xl mx-auto p-4">
@@ -40,5 +54,5 @@ export default function WebPageGenerator() {
         </div>
       )}
     </div>
-  )
+  );
 }
