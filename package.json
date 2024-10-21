@@ -14,18 +14,18 @@
     "test": "jest"
   },
   "dependencies": {
-    "next": "12.0.0",
-    "react": "^17.0.0",
-    "react-dom": "^17.0.0",
+    "next": "13.0.0", // Actualiza la versión aquí
+    "react": "^18.0.0", // También puedes actualizar React
+    "react-dom": "^18.0.0", // Actualiza ReactDOM
     "some-module": "0.0.3",
     "estoni-web-ai": "file:../vercel"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
+    "@types/react": "^18.0.0", // Asegúrate de que los tipos de React coincidan
+    "@types/react-dom": "^18.0.0", // Asegúrate de que los tipos de ReactDOM coincidan
     "eslint": "^8.0.0",
-    "eslint-config-next": "^12.0.0",
+    "eslint-config-next": "^13.0.0", // Actualiza la configuración de ESLint también
     "postcss": "^8.0.0",
     "tailwindcss": "^3.4.1",
     "typescript": "^4.9.5"
